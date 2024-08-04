@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vendaqui - {{titulo}}</title>    
+    <title>Vendaqui - {{titulo}}</title>  
 </head>
-
 <Body>
+    <div class="header" style="background-color: lightgray;
+	border-radius: 10px;
+    justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
     <h3>{{titulo}}</h3>
-    <div>
+    </div>
+    <div class="formulario" style="background-color: whitesmoke;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
     <form action="caduser" method="post">
-        <p><label for="user">Nome de Usuário</label></p>
+        <p><label for="user">Nome de Usuário*</label></p>
         <p><input type="text" id="user" name="user"></p>
-
-        <p><label for="email">E-mail</label></p>
+        <p><label for="email">E-mail*</label></p>
         <p><input type="text" id="email" name="email"></p>
-
-        <p><label for="senha">Senha</label></p>
+        <p><label for="senha">Senha*</label></p>
         <p><input type="password" id="senha" name="senha"></p>
-        
         <p><input type="submit" value="Cadastrar"></p>
     </form>
     </div>
-
+    <div class="aviso" style="font-size: 12px;">
+        <p>*Campos Obrigatórios.</p>
+    </div>  
+    <footer>Copyright &copy; 2024</footer>
 </Body>
+</html>
 
 
 

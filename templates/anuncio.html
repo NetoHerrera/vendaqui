@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vendaqui - Cadastro de Anúncios</title>    
+    <title>Vendaqui - Cadastro de Anúncios</title>  
 </head>
 
 <Body>
+    <div class="header" style="background-color: lightgray;
+	border-radius: 10px;
+    justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
     <h3>Cadastrop de Anúncios</h3>
-    <div>
+    </div>
+    <div class="formulario" style="background-color: whitesmoke;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
     <form action="cadanun" method="post">
-        <p><label for="anuncio">Nome de Produto</label></p>
+        <p><label for="anuncio">Nome de Produto*</label></p>
         <p><input type="text" id="anuncio" name="anuncio"></p>
-
-        <p><label for="valor">Valor</label></p>
+        <p><label for="valor">Valor*</label></p>
         <p><input type="text" id="valor" name="valor"></p>
-
         <p><label for="descricao">Descrição</label></p>
         <p><input type="text" id="descricao" name="descricao"></p>
-
-        <p><label for="quantidade">Quantidade</label></p>
+        <p><label for="quantidade">Quantidade*</label></p>
         <p><input type="text" id="quantidade" name="quantidade"></p>
-
-        <p><label for="condicao">Condição</label></p>
+        <p><label for="condicao">Condição*</label></p>
         <p><input type="text" id="condicao" name="condicao"></p>
-        
         <p><input type="submit" value="Anunciar"></p>
     </form>
     </div>
-
+    <div class="aviso" style="font-size: 12px;">
+        <p>*Campos Obrigatórios.</p>
+    </div>  
+    <footer>Copyright &copy; 2024</footer>
 </Body>
+</html>
