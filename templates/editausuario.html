@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendaqui - Editar{{titulo}}</title>  
+</head>
+<Body>
+    <div class="header" style="background-color: lightgray;
+	border-radius: 10px;
+    justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
+    <h3>Editar {{titulo}}</h3>
+    </div>
+    <div class="formulario" style="background-color: whitesmoke;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
+    <form action="/cadastro/usuario/editar/{{usuario.id}}" method="post">
+        <p><label for="user">Nome de Usuário*</label></p>
+        <p><input type="text" id="user" name="user" value="{{usuario.nome}}"></p>
+
+        <p><label for="email">E-mail*</label></p>
+        <p><input type="text" id="email" name="email" value="{{usuario.email}}"></p>
+
+        <p><label for="cpf">CPF*</label></p>
+        <p><input type="text" id="cpf" name="cpf" value="{{usuario.cpf}}"></p>
+
+        <p><label for="senha">Senha*</label></p>
+        <p><input type="password" id="senha" name="senha" value="{{usuario.senha}}"></p>
+
+        <p><label for="end">Endereço*</label></p>
+        <p><input type="text" id="end" name="end" value="{{usuario.end}}"></p>
+
+        <p><input type="submit" value="Alterar"></p>
+        
+    </form>
+    </div>
+    <div class="aviso" style="font-size: 12px;">
+        <p>*Campos Obrigatórios.</p>
+    </div>  
+    <a href={{url_for("cadusuario")}}>Cancelar</a>
+    <footer>Copyright &copy; 2024</footer>
+
+   
+</Body>
+</html>

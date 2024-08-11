@@ -53,6 +53,8 @@
                 <th>CPF</th>
                 <th>Senha</th>
                 <th>Endereço</th>
+                <th>Editar</th>
+                <th>Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -63,6 +65,8 @@
                     <td>{{usuario.cpf}}</td>
                     <td>{{usuario.senha}}</td>
                     <td>{{usuario.end}}</td>
+                    <td><a href={{url_for("editauser", id=usuario.id)}}>Editar</a></td>
+                    <td><a href={{url_for("deletauser", id=usuario.id)}}>Deletar</a></td>
                 </tr>
             {% endfor %}    
         </tbody>

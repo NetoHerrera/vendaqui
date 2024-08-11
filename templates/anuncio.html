@@ -30,7 +30,7 @@
         <p><input type="text" id="valor" name="valor"></p>
 
         <p><label for="descricao">Descrição</label></p>
-        <p><input type="text" id="descricao" name="descricao"></p>
+        <p><textarea rows="4" cols="50" id="descricao" name="descricao"></textarea></p>
 
         <p><label for="quantidade">Quantidade*</label></p>
         <p><input type="text" id="quantidade" name="quantidade"></p>
@@ -46,5 +46,27 @@
         <p>*Campos Obrigatórios.</p>
     </div>  
     <footer>Copyright &copy; 2024</footer>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Condição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for anuncio in anuncios%}
+                <tr>
+                    <td>{{anuncio.nome}}</td>
+                    <td>{{anuncio.valor}}</td>
+                    <td>{{anuncio.desc}}</td>
+                    <td>{{anuncio.qnt}}</td>
+                    <td>{{anuncio.cond}}</td>
+                </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
 </Body>
 </html>
