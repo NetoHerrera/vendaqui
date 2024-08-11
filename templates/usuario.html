@@ -27,8 +27,14 @@
         <p><label for="email">E-mail*</label></p>
         <p><input type="text" id="email" name="email"></p>
 
+        <p><label for="cpf">CPF*</label></p>
+        <p><input type="text" id="cpf" name="cpf"></p>
+
         <p><label for="senha">Senha*</label></p>
         <p><input type="password" id="senha" name="senha"></p>
+
+        <p><label for="end">Endereço*</label></p>
+        <p><input type="text" id="end" name="end"></p>
 
         <p><input type="submit" value="Cadastrar"></p>
         
@@ -38,6 +44,29 @@
         <p>*Campos Obrigatórios.</p>
     </div>  
     <footer>Copyright &copy; 2024</footer>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>CPF</th>
+                <th>Senha</th>
+                <th>Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for usuario in usuarios%}
+                <tr>
+                    <td>{{usuario.nome}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.cpf}}</td>
+                    <td>{{usuario.senha}}</td>
+                    <td>{{usuario.end}}</td>
+                </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
 </Body>
 </html>
 
