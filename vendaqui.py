@@ -48,15 +48,19 @@ class Anuncio(db.Model):
     desc = db.Column('prod_desc', db.String(256))
     qnt = db.Column('prod_qnt', db.String(256))
     cond = db.Column('prod_cond', db.String(256))
-    cat_id = db.Column('cat_id',db.Integer, db.ForeignKey("categoria.cat_id"))
-    usu_id = db.Column('usu_id',db.Integer, db.ForeignKey("usuario.usu_id"))
+    #cat_id = db.Column('cat_id',db.Integer, db.ForeignKey("categoria.cat_id"))
+    #usu_id = db.Column('usu_id',db.Integer, db.ForeignKey("usuario.usu_id"))
 
     def __init__(self, nome, valor, desc, qnt, cond):
         self.nome = nome
         self.valor = valor
         self.desc = desc
         self.qnt = qnt
-        self.cond = cond       
+        self.cond = cond 
+
+@app.errorhandler(404)              
+def paginanaoencontrada(error):
+    return render_template('paginanaoencontrada.html')
 
 @app.route ("/")
 def index():
@@ -103,15 +107,77 @@ def deletauser(id):
 
 
 @app.route("/cadastro/anuncio")
-def anuncio():
+def cadanuncio():
     return render_template ('anuncio.html', anuncios = Anuncio.query.all())
+
+@app.route("/cadastro/anuncio/detalhar/<int:id>")
+def buscaanun(id):
+    anuncio=Anuncio.query.get(id)
+    return anuncio.nome
 
 @app.route("/cadastro/cadanun", methods=['POST'])
 def cadanun():
     anuncio=Anuncio(request.form.get('anuncio'), request.form.get('valor'), request.form.get('descricao'), request.form.get('quantidade'), request.form.get('condicao'))
     db.session.add(anuncio)
     db.session.commit()
-    return redirect(url_for('anuncio'))
+    return redirect(url_for('cadanuncio'))
+
+@app.route("/cadastro/anuncio/editar/<int:id>", methods=['GET', 'POST'])
+def editaanun(id):
+    anuncio=Anuncio.query.get(id)
+    if request.method == 'POST':
+        anuncio.nome=request.form.get('anuncio')
+        anuncio.valor=request.form.get('valor')
+        anuncio.desc=request.form.get('descricao')
+        anuncio.qnt=request.form.get('quantidade')
+        anuncio.cond=request.form.get('condicao')
+        db.session.add(anuncio)
+        db.session.commit()
+
+        return redirect(url_for('cadanuncio'))
+    return render_template ('editaanuncio.html', anuncio = anuncio )
+
+
+@app.route("/cadastro/anuncio/deletar/<int:id>")
+def deletaanun(id):
+    anuncio=Anuncio.query.get(id)
+    db.session.delete(anuncio)
+    db.session.commit()
+    return redirect(url_for('cadanun'))
+
+@app.route("/cadastro/categoria")
+def cadcategoria():
+    return render_template('categoria.html', categorias = Categoria.query.all())
+
+@app.route("/cadastro/cadcat/", methods=['POST'])
+def cadcat():
+    categoria = Categoria(request.form.get('nome'), request.form.get('descri'))
+    db.session.add(categoria)
+    db.session.commit()
+    return redirect(url_for('cadcategoria'))
+
+@app.route("/cadastro/categoria/editar/<int:id>", methods=['GET', 'POST'])
+def editarcategoria(id):
+    categoria=Categoria.query.get(id)
+    if request.method == 'POST':
+        categoria.nome=request.form.get('nome')
+        categoria.desc=request.form.get('descri')
+        db.session.add(categoria)
+        db.session.commit()
+
+        return redirect(url_for('cadcategoria'))
+    return render_template ('editacategoria.html', categoria = categoria )
+
+
+
+
+@app.route("/cadastro/categoria/deletar/<int:id>")
+def deletacat(id):
+    categoria=Categoria.query.get(id)
+    db.session.delete(categoria)
+    db.session.commit()
+    return redirect(url_for('cadcategoria'))
+
 
 
 @app.route("/anuncio/pergunta")
@@ -131,10 +197,6 @@ def compra():
 def favorito():
     print("Inserido à lista de favoritos")
     return ""
-
-@app.route("/configuracoes/categoria")
-def categoria():
-    return render_template('categoria.html')
 
 @app.route("/relatorios/vendas")
 def rvendas():

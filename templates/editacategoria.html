@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendaqui - Categorias</title>    
+</head>
+<Body>
+    <div class="header" style="background-color: lightgray;
+	border-radius: 10px;
+    justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;"> 
+    <h3>Categorias</h3>
+    </div>
+    <form action="/cadastro/categoria/editar/{{categoria.id}}" method="post">
+        <p><label for="categoria">Categoria</label></p>
+        <p><input type="text" id="categoria" name="categoria" value="{{categoria.nome}}"></p>
+
+        <p><label for="descricao">Descrição</label></p>
+        <p><textarea rows="4" cols="50" id="descricao" name="descricao" value="{{categoria.desc}}"></textarea></p>
+        <p><input type="submit" value="Criar Categoria"></p>
+    </form>
+    
+    <div>
+        <a href={{url_for("cadcategoria")}}>Cancelar</a>
+    </div>
+</Body>
+</html>

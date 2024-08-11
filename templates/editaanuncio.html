@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendaqui - Cadastro de Anúncios</title>  
+</head>
+
+<Body>
+    <div class="header" style="background-color: lightgray;
+	border-radius: 10px;
+    justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
+    <h3>Cadastro de Anúncios</h3>
+    </div>
+
+    <div class="formulario" style="background-color: whitesmoke;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: cecnter;
+	width: 400px;
+	max-width: 100%;
+	overflow: hidden;">
+    <form action="/cadastro/anuncio/editar/{{anuncio.id}}" method="post">
+        <p><label for="anuncio">Nome de Produto*</label></p>
+        <p><input type="text" id="anuncio" name="anuncio" value="{{anuncio.nome}}"></p>
+
+        <p><label for="valor">Valor*</label></p>
+        <p><input type="text" id="valor" name="valor" value="{{anuncio.valor}}"></p>
+
+        <p><label for="descricao">Descrição</label></p>
+        <p><input type="text" id="descricao" name="descricao" value="{{anuncio.desc}}"></p>
+
+        <p><label for="quantidade">Quantidade*</label></p>
+        <p><input type="text" id="quantidade" name="quantidade" value="{{anuncio.qnt}}"></p>
+
+        <p><label for="condicao">Condição*</label></p>
+        <p><input type="text" id="condicao" name="condicao" value="{{anuncio.cond}}"></p>
+
+        <p><input type="submit" value="Editar"></p>
+    </form>
+    </div>
+    
+    <div class="aviso" style="font-size: 12px;">
+        <p>*Campos Obrigatórios.</p>
+    </div>  
+    <footer>Copyright &copy; 2024</footer>
+    <a href={{url_for("cadanuncio")}}>Cancelar</a>
+</Body>
+</html>

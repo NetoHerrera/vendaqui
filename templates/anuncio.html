@@ -12,7 +12,7 @@
 	width: 400px;
 	max-width: 100%;
 	overflow: hidden;">
-    <h3>Cadastrop de Anúncios</h3>
+    <h3>Cadastro de Anúncios</h3>
     </div>
 
     <div class="formulario" style="background-color: whitesmoke;
@@ -54,6 +54,8 @@
                 <th>Descrição</th>
                 <th>Quantidade</th>
                 <th>Condição</th>
+                <th>Editar</th>
+                <th>Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -64,6 +66,8 @@
                     <td>{{anuncio.desc}}</td>
                     <td>{{anuncio.qnt}}</td>
                     <td>{{anuncio.cond}}</td>
+                    <td><a href={{url_for("editaanun", id=anuncio.id)}}>Editar</a></td>
+                    <td><a href={{url_for("deletaanun", id=anuncio.id)}}>Deletar</a></td>
                 </tr>
             {% endfor %}    
         </tbody>

@@ -13,7 +13,33 @@
 	overflow: hidden;"> 
     <h3>Categorias</h3>
     </div>
-    
+    <form action="cadcat" method="post">
+        <p><label for="nome">Categoria</label></p>
+        <p><input type="text" id="nome" name="nome"></p>
+
+        <p><label for="descri">Descrição</label></p>
+        <p><textarea rows="4" cols="50" id="descri" name="descri"></textarea></p>
+        <p><input type="submit" value="Criar Categoria"></p>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for categoria in categorias %}
+                <tr>
+                    <td>{{categoria.nome}}</td>
+                    <td>{{categoria.desc}}</td>
+                    <td><a href={{url_for("editarcategoria", id=categoria.id)}}>Editar</a></td>
+                    <td><a href={{url_for("deletacat", id=categoria.id)}}>Deletar</a></td>
+                </tr>
+            {% endfor %}    
+        </tbody>
     <div>
 
     </div>
