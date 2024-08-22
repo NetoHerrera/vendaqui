@@ -169,6 +169,7 @@ def buscaanun(id):
     return anuncio.nome
 
 @app.route("/cadastro/cadanun", methods=['POST'])
+@login_required
 def cadanun():
     anuncio=Anuncio(request.form.get('anuncio'), request.form.get('valor'), request.form.get('descricao'), request.form.get('quantidade'), request.form.get('condicao'))
     db.session.add(anuncio)
@@ -206,6 +207,7 @@ def cadcategoria():
     return render_template('categoria.html', categorias = Categoria.query.all())
 
 @app.route("/cadastro/cadcat/", methods=['POST'])
+@login_required
 def cadcat():
     categoria = Categoria(request.form.get('nome'), request.form.get('descri'))
     db.session.add(categoria)
@@ -247,20 +249,24 @@ def perguntaanun():
     return request.form
 
 @app.route("/anuncio/compra")
+@login_required
 def compra():
     print("Compra efetuada")
     return ""
 
 @app.route("/anuncio/favorito")
+@login_required
 def favorito():
     print("Inserido à lista de favoritos")
     return ""
 
 @app.route("/relatorios/vendas")
+@login_required
 def rvendas():
     return render_template ('rvendas.html')
 
 @app.route("/relatorios/compras")
+@login_required
 def rcompras():
     return render_template ('rcompras.html')
 
