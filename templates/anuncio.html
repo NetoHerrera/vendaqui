@@ -2,75 +2,85 @@
 <html>
 <head>
     <title>Vendaqui - Cadastro de Anúncios</title>  
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
 </head>
 
 <Body>
-    <div class="header" style="background-color: lightgray;
-	border-radius: 10px;
-    justify-content: center;
-	align-items: cecnter;
-	width: 400px;
-	max-width: 100%;
-	overflow: hidden;">
-    <h3>Cadastro de Anúncios</h3>
-    </div>
-
-    <div class="formulario" style="background-color: whitesmoke;
-	border-radius: 10px;
-	justify-content: center;
-	align-items: cecnter;
-	width: 400px;
-	max-width: 100%;
-	overflow: hidden;">
-    <form action="cadanun" method="post">
-        <p><label for="anuncio">Nome de Produto*</label></p>
-        <p><input type="text" id="anuncio" name="anuncio"></p>
-
-        <p><label for="valor">Valor*</label></p>
-        <p><input type="text" id="valor" name="valor"></p>
-
-        <p><label for="descricao">Descrição</label></p>
-        <p><textarea rows="4" cols="50" id="descricao" name="descricao"></textarea></p>
-
-        <p><label for="quantidade">Quantidade*</label></p>
-        <p><input type="text" id="quantidade" name="quantidade"></p>
-
-        <p><label for="condicao">Condição*</label></p>
-        <p><input type="text" id="condicao" name="condicao"></p>
-
-        <p><input type="submit" value="Anunciar"></p>
-    </form>
+    
+    
+    <div class="container">
+        <div class="page-header">
+            <h3>Cadastro de Anuncios</h3>
+        </div>
+    
+        <form action="cadanun" method="post">
+            <div class="form-group">
+                <label for="anuncio">Nome de Produto*</label></p>
+                <input type="text" id="anuncio" class="form-control" name="anuncio">
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor*</label>
+                <input type="text" id="valor" class="form-control" name="valor">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea rows="4" cols="50" id="descricao" class="form-control" name="descricao"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade*</label>
+                <input type="text" id="quantidade" class="form-control" name="quantidade">
+            </div>
+            <div class="form-group">
+                <label for="condicao">Condição*</label>
+                <input type="text" id="condicao" class="form-control" name="condicao">
+            </div>
+            <div class="form-group">
+                <label for="cat">Categoria</label>
+                    <select id="cat" class="form-control" name="cat">
+                        {% for categoria in categorias %} 
+                            <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                        {% endfor %}
+                    </select>
+                
+            </div>
+            <button type="submit" class="btn btn-primary" >Anunciar</button>
+            <button type="reset" class="btn btn-primary" >Limpar</button>    
+        </form>
+        <div class="aviso" style="font-size: 12px;">
+            <p>*Campos Obrigatórios.</p>
+        </div>  
+        <footer>Copyright &copy; 2024</footer>
     </div>
     
-    <div class="aviso" style="font-size: 12px;">
-        <p>*Campos Obrigatórios.</p>
-    </div>  
-    <footer>Copyright &copy; 2024</footer>
-    <table>
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Valor</th>
-                <th>Descrição</th>
-                <th>Quantidade</th>
-                <th>Condição</th>
-                <th>Editar</th>
-                <th>Deletar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {%for anuncio in anuncios%}
+    <div class="container">
+        <table class="table table-responsive table-striped table-bordered">
+            <thead class="thread-default">
                 <tr>
-                    <td>{{anuncio.nome}}</td>
-                    <td>{{anuncio.valor}}</td>
-                    <td>{{anuncio.desc}}</td>
-                    <td>{{anuncio.qnt}}</td>
-                    <td>{{anuncio.cond}}</td>
-                    <td><a href={{url_for("editaanun", id=anuncio.id)}}>Editar</a></td>
-                    <td><a href={{url_for("deletaanun", id=anuncio.id)}}>Deletar</a></td>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                    <th>Condição</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
                 </tr>
-            {% endfor %}    
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {%for anuncio in anuncios%}
+                    <tr>
+                        <td>{{anuncio.nome}}</td>
+                        <td>{{anuncio.valor}}</td>
+                        <td>{{anuncio.desc}}</td>
+                        <td>{{anuncio.qnt}}</td>
+                        <td>{{anuncio.cond}}</td>
+                        <td>{{ anuncio.cat_id }}</td>
+                        <td><a href={{url_for("editaanun", id=anuncio.id)}}>Editar</a></td>
+                        <td><a href={{url_for("deletaanun", id=anuncio.id)}}>Deletar</a></td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
 </Body>
 </html>

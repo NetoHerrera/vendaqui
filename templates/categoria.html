@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vendaqui - Categorias</title>    
+    <title>Vendaqui - Categorias</title>  
+    <link rel="stylesheet" href="../static/css/bootstrap.css">  
 </head>
 <Body>
-    <div class="header" style="background-color: lightgray;
-	border-radius: 10px;
-    justify-content: center;
-	align-items: cecnter;
-	width: 400px;
-	max-width: 100%;
-	overflow: hidden;"> 
-    <h3>Categorias</h3>
+    <div class="container">
+        <div class="page-header">
+            <h3>Categorias</h3>
+        </div>
+            <form action="cadcat" method="post">
+            <div class="form-group">
+                <label for="nome">Categoria</label>
+                <input type="text" id="nome" CLASS="form-control" name="nome">
+            </div>
+            <div class="form-group">
+                <label for="descri">Descrição</label>
+                <textarea rows="4" cols="50" id="descri" class="form-control" name="descri"></textarea>
+            </div>    
+            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+            <button type="reset" class="btn btn-primary" >Limpar</button>
+            </form>
     </div>
-    <form action="cadcat" method="post">
-        <p><label for="nome">Categoria</label></p>
-        <p><input type="text" id="nome" name="nome"></p>
-
-        <p><label for="descri">Descrição</label></p>
-        <p><textarea rows="4" cols="50" id="descri" name="descri"></textarea></p>
-        <p><input type="submit" value="Criar Categoria"></p>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Categoria</th>
-                <th>Descrição</th>
-                <th>Editar</th>
-                <th>Deletar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {%for categoria in categorias %}
+    <div class="container">
+        <table class="table table-responsive table-striped table-bordered">
+            <thead class="thread-default">
                 <tr>
-                    <td>{{categoria.nome}}</td>
-                    <td>{{categoria.desc}}</td>
-                    <td><a href={{url_for("editarcategoria", id=categoria.id)}}>Editar</a></td>
-                    <td><a href={{url_for("deletacat", id=categoria.id)}}>Deletar</a></td>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
                 </tr>
-            {% endfor %}    
-        </tbody>
-    </table>    
+            </thead>
+            <tbody>
+                {%for categoria in categorias %}
+                    <tr>
+                        <td>{{categoria.nome}}</td>
+                        <td>{{categoria.desc}}</td>
+                        <td><a href={{url_for("editarcategoria", id=categoria.id)}}>Editar</a></td>
+                        <td><a href={{url_for("deletacat", id=categoria.id)}}>Deletar</a></td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>    
     <div>
 
-    </div>
+    
 </Body>
 </html>

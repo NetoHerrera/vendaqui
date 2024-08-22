@@ -2,35 +2,26 @@
 <html>
 <head>
     <title>Vendaqui - Perguntas</title> 
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
 </head>
 <Body>
-    <div class="header" style="background-color: lightgray;
-	border-radius: 10px;
-    justify-content: center;
-	align-items: cecnter;
-	width: 400px;
-	max-width: 100%;
-	overflow: hidden;">
-    <h3>Perguntas</h3>
+    
+    <div class="container">
+        <div class="page-header">
+            <h3>Perguntas</h3>
+        </div>
+        <form action="perguntaanun" method="post">
+            <div class="form-group">
+                <label for="pergunta">Faça sua Pergunta*</label>
+                <input type="pergunta" class="form-control" id="user" name="pergunta">
+            </div>
+            <button type="submit" class="btn btn-primary" >Perguntar</button>
+            <button type="reset" class="btn btn-primary" >Limpar</button>
+        </form>
+        <div class="aviso" style="font-size: 12px;">
+            <p>*Campos Obrigatórios.</p>
+        </div>  
+        <footer>Copyright &copy; 2024</footer>
     </div>
-
-    <div class="formulario" style="background-color: whitesmoke;
-	border-radius: 10px;
-	justify-content: center;
-	align-items: cecnter;
-	width: 400px;
-	max-width: 100%;
-	overflow: hidden;">
-    <form action="perguntaanun" method="post">
-        <p><label for="pergunta">Faça sua Pergunta*</label></p>
-        <p><input type="pergunta" id="user" name="pergunta"></p>
-        
-        <p><input type="submit" value="Perguntar"></p>
-    </form>
-    </div>
-    <div class="aviso" style="font-size: 12px;">
-        <p>*Campos Obrigatórios.</p>
-    </div>  
-    <footer>Copyright &copy; 2024</footer>
 </Body>
 </html>
